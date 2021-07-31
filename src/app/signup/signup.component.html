@@ -1,0 +1,18 @@
+
+<div class="col -md-8 mx-auto">
+    <div class="card mt-5">
+        <div class="card-body">
+            <form [formGroup]="registerForm" (ngSubmit)="registerSubmit()">
+                <h2 class="text-center">Registration Page</h2>
+                <label class="mt-5" >Fullname</label>
+                <input type="text" class="form-control" formControlName="fullname">
+                <label class="mt-5">Email</label>
+                <input type="email" class="form-control" formControlName="email">
+                <label  class="mt-5">Password</label>
+                <input type="password" class="form-control" formControlName="password">
+                <button type="submit" class="mt-5 btn btn-success w-100">Submit</button>
+ 
+            </form>
+        </div>
+    </div>
+</div>

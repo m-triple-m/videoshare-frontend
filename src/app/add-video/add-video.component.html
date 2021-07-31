@@ -1,0 +1,27 @@
+<div class="col -md-8 mx-auto">
+    <div class="card mt-5">
+        <div class="card-body">
+            <form [formGroup]="videoForm" (ngSubmit)="videoSubmit()">
+                <h2 class="text-center">Add Video</h2>
+                <!-- <label class="mt-5" >user</label>
+                <input type="text" class="form-control" formControlName="user"> -->
+                <mat-form-field appearance="fill" class="w-100">
+                <mat-label class="mt-5">TITLE</mat-label>
+                <input type="text" class="form-control" formControlName="title">
+                </mat-form-field>
+                
+               
+                <label  class="mt-5">thumbnail</label>
+                <input type="file" class="form-control" (change)="uploadThumbnail($event)">
+                
+
+                
+                <label  class="mt-5">file</label>
+                <input type="file" class="form-control"(change)="uploadVideo($event)" >
+               
+                <button type="submit" class="mt-5 btn btn-success w-100">Submit</button>
+ 
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+.card{
+    border: 1px solid black;
+    width: 75%;
+    margin: 200px auto 50px auto; 
+    
+    border-radius: 10px;
+    padding: 30px;
+    background-color: rgb(156, 245, 238);
+    box-shadow: 2px 2px 6px 4px rgba(3, 12, 3, 0.753) ;
+}
+
+.title{
+    text-align: center;
+}
+label,.detail,button{
+    display: block;
+}
+label{
+    margin-top: 20px;
+    font-size: 1.2em;
+    
+}
+button{
+    margin-top: 40px;
+    width: 100%;
+    padding: 10px;
+    font-size: 1.1em;
+    color: rgb(216, 237, 100);
+    border-radius: 25px;
+    background: linear-gradient(to right bottom, rgba(233, 14, 167, 0.822), rgba(134, 21, 226, 0.733),rgba(201, 101, 240, 0.575)) no-repeat;
+}
+.detail{
+    width: 100%;
+    height: 2em;
+    border-radius: 25px;
+}
+hr{
+    
+    text-align: center;
+    width: 35%
+    
+    
+}
+h2{
+    text-align: center;
+}
+a{
+    text-decoration: none;
+    text-align: right;
+    color: black;
+    
+}
