@@ -1,6 +1,16 @@
 <div class="col-md-10 mx-auto">
     <div class="user-info">
-        <p class="username">Currently Logged in : {{currentUser.fullname}}</p>
+    </div>
+    <div class="card">
+        <div class="card-header bg-primary">
+            <p class="h5 text-white">Currently Logged In</p>
+        </div>
+        <div class="card-body">
+            <p class="username">Unique ID : <b>{{currentUser._id}}</b></p>
+            <p class="username">Full Name : <b>{{currentUser.fullname}}</b></p>
+            <p class="username">Email : <b>{{currentUser.email}}</b></p>
+
+        </div>
     </div>
     <div>
     <h1 class="text-center">Manage your videos</h1>
@@ -13,12 +23,19 @@
              <img [src]="url+'/'+ video['thumbnail']" alt="" class="card-img-top">
                </div>
 
-               <div class="col-md-4 card-body">
+               <div class="col-md-3 card-body">
                    <h2 > {{video['title']}}</h2>
-                   <button class="btn btn-primary mt-5" [routerLink]="['/view', video['_id']]"  >View Video</button>
+                   <div class="row">
+                       <div class="col">
+                           <button class="btn btn-primary mt-5" [routerLink]="['/view', video['_id']]"  >View Video</button>
+                       </div>
+                       <div class="col">
+                           <button class="btn btn-danger mt-5" (click)="deleteVideo(video['_id'])" > <i class="fa fa-trash" aria-hidden="true"></i> </button>
+                       </div>
+                   </div>
                    
             </div>
-            <div class="col-md-4 card-body">
+            <div class="col-md-5 card-body">
                 <div class="input-group"  >
                     <input type="email" #userEmail class="form-control">
                     <div class="input-group-append">
@@ -46,7 +63,42 @@
     <div class="card">
         <div class="card-body">
             <h1>Shared with you</h1>
-            
+            <div class="mycard card mt-5" *ngFor="let video of sharedVideoList">
+                <div class="">
+               <div class="row">
+                   <div class="col-md-4">
+                 <img [src]="url+'/'+ video['thumbnail']" alt="" class="card-img-top">
+                   </div>
+    
+                   <div class="col-md-3 card-body">
+                       <h2 > {{video['title']}}</h2>
+                       <button class="btn btn-primary mt-5" [routerLink]="['/view', video['_id']]"  >View Video</button>
+                       
+                </div>
+                <div class="col-md-5 card-body">
+                    <div class="input-group"  >
+                        <input type="email" #userEmail class="form-control">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary"  (click)="shareToUser(video,userEmail.value)">Add User</button>
+                        </div>
+                    </div>
+                    <a data-bs-toggle="collapse" [href]="'#'+video['title']" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Shared to : 
+                      </a>
+                    <hr>
+                    <div class="collapse" [id]="video['title']">
+    
+                        <div class="list-group">
+                            <div class="list-group-item" *ngFor="let user of video['shared'] ">
+                                <p >{{user.fullname}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               </div>
+    
+                </div>
+            </div>
         </div>
     </div>
 </div>

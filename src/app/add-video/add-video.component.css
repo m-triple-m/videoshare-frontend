@@ -1,0 +1,11 @@
+header{
+    /* height: 15rem; */
+    padding: 5rem;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.404), rgba(0, 0, 0, 0.445)), url(https://i.ytimg.com/vi/8ZMxLZqL73M/maxresdefault.jpg) center no-repeat;
+    background-size: cover;
+}
+
+
+*{
+    font-family: Ubuntu;
+}

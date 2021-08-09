@@ -1,27 +1,41 @@
-<div class="col -md-8 mx-auto">
-    <div class="card mt-5">
-        <div class="card-body">
+
+
+<div class="col-md-12 mx-auto">
+   <header class="">
+    <h1 class="text-center text-white">ADD NEW VIDEO</h1>
+   </header>
+   <div class="col-md-8 mx-auto">
+    <div class="card mt-5" style="border-radius: 1rem;">
+        <div class="card-body" style="padding: 3rem">
             <form [formGroup]="videoForm" (ngSubmit)="videoSubmit()">
-                <h2 class="text-center">Add Video</h2>
                 <!-- <label class="mt-5" >user</label>
                 <input type="text" class="form-control" formControlName="user"> -->
-                <mat-form-field appearance="fill" class="w-100">
+                <mat-form-field appearance="outline" class="w-100">
                 <mat-label class="mt-5">TITLE</mat-label>
-                <input type="text" class="form-control" formControlName="title">
+                <input matInput type="text" formControlName="title">
                 </mat-form-field>
+                   
+                <div class="row">
+                    <div class="col-md">
+                        <label  class="mt-5">thumbnail</label>
+                        <input type="file" class="form-control" (change)="uploadThumbnail($event)">
+                    </div>
+    
+                    <div class="col-md">
+                        <label  class="mt-5">file</label>
+                        <input type="file" class="form-control"(change)="uploadVideo($event)" >
+                    </div>
+                </div>  
+                
+    
                 
                
-                <label  class="mt-5">thumbnail</label>
-                <input type="file" class="form-control" (change)="uploadThumbnail($event)">
-                
-
-                
-                <label  class="mt-5">file</label>
-                <input type="file" class="form-control"(change)="uploadVideo($event)" >
                
-                <button type="submit" class="mt-5 btn btn-success w-100">Submit</button>
- 
+         <button mat-raised-button color="primary" class="mt-5 w-100">Submit</button>
+    
             </form>
         </div>
-    </div>
-</div>
+    
+    
+   </div>
+   </div>

@@ -12,6 +12,7 @@ import { VideoService } from '../service/video.service';
 })
 export class ManageVideoComponent implements OnInit {
   videoList=[];
+  sharedVideoList=[];
   currentUser:any;
   url= app_config.api_url;
   userEmail:any;
@@ -20,7 +21,15 @@ export class ManageVideoComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = JSON.parse(sessionStorage.getItem('user') as string);
     this.fetchVideo();
+  document.body.classList.add('manage-video');
+  
   }
+  ngOnDestroy(){
+    document.body.classList.remove('manage-video');
+
+  }
+
+
 
   fetchVideo(){
    this.videoService.getVideosByUser(this.currentUser._id)
@@ -28,6 +37,27 @@ export class ManageVideoComponent implements OnInit {
        this.videoList=data;
        console.log(this.videoList);
    })
+  }
+
+  fetchSharedVideos(){
+    this.videoService.getSharedVideos(this.currentUser._id)
+    .subscribe((data:any)=>{
+        this.sharedVideoList=data;
+        console.log(this.sharedVideoList);
+    })
+  }
+
+  deleteVideo(id:any){
+    this.videoService.deleteVideo(id)
+    .subscribe((data:any)=>{
+       
+        console.log(data);
+        Swal.fire({
+          icon:'warning',
+          title:'video deleted'
+        })
+        this.fetchVideo();
+    })
   }
 
   shareToUser(video:any,email:any){

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import Swal from 'sweetalert2';
 import { UserService } from '../service/user.service';
 import { VideoService } from '../service/video.service';
 
@@ -22,7 +23,15 @@ export class AddVideoComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = JSON.parse(sessionStorage.getItem('user') as string);
     this.initForm();
+
+    document.body.classList.add('add-video');
   }
+
+  ngOnDestroy(){
+    document.body.classList.remove('add-video');
+
+  }
+
   initForm() {
     this.videoForm = this.fb.group({
       user: this.currentUser._id,
@@ -66,6 +75,10 @@ export class AddVideoComponent implements OnInit {
 
     this.userservice.addFile(formdata).subscribe((res) => {
       console.log(res);
+      Swal.fire({
+        icon : 'success',
+        title: 'Add Video Success'
+      })
     });
   }
 }

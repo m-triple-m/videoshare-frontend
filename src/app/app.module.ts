@@ -18,6 +18,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
+import {MatButtonModule} from '@angular/material/button';
+
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import {MatSelectModule} from '@angular/material/select';
     ViewVideoComponent,
     ManageVideoComponent,
     HeaderComponent,
+    
+
   
     
 
@@ -46,6 +50,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatCheckboxModule,
     MatRadioModule,
     MatSelectModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

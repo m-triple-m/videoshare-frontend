@@ -9,7 +9,14 @@ import { app_config } from '../config';
 export class UserService {
   
   url= app_config.api_url;
-  constructor(private http: HttpClient) { }
+  currentUser:any;
+  constructor(private http: HttpClient) {
+    let user = sessionStorage.getItem('user');
+
+    if(user){
+      this.currentUser = JSON.parse(user);
+    }
+  }
 
   addUser(data : any) : Observable<any>{
     return this.http.post( this.url+'/user/add',data);

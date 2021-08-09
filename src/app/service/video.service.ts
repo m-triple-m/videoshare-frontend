@@ -25,4 +25,13 @@ export class VideoService {
   addUser( id:any,data:any){
     return this.http.put(this.url + '/video/pushupdate/'+id,data);
   }
+
+  getSharedVideos(id: any){
+    return this.http.get(this.url + '/video/getshared/'+id)
+}
+
+
+  deleteVideo(id:any){
+    return this.http.delete(this.url + '/video/delete/' + id)
+  }
 }

@@ -15,7 +15,15 @@ loginform : any;
 
   ngOnInit(): void {
     this.initForm();
+
+    document.body.classList.add('login');
+  
   }
+  ngOnDestroy(){
+    document.body.classList.remove('login');
+
+  }
+  
 initForm()
 {this.loginform = this.fb.group({
 email : '',
@@ -40,7 +48,9 @@ submitForm(){
       title: 'Hurray',
       text: 'Logged in Successfully'
     })
+    this.userservice.currentUser = data;
     this.router.navigate(['/managevideo']);
+
     
   }else{
       console.log('password incorrect');
