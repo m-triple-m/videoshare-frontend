@@ -14,6 +14,7 @@ export class AddVideoComponent implements OnInit {
   currentUser: any;
   thumbnail: any = '';
   videoFile: any = '';
+
   constructor(
     private fb: FormBuilder,
     private videoservice: VideoService,
@@ -27,9 +28,8 @@ export class AddVideoComponent implements OnInit {
     document.body.classList.add('add-video');
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     document.body.classList.remove('add-video');
-
   }
 
   initForm() {
@@ -40,14 +40,15 @@ export class AddVideoComponent implements OnInit {
       created: new Date(),
       shared: Array,
       title: '',
+      public: false,
     });
   }
 
   videoSubmit() {
     console.log(this.videoForm.value);
-    let formdata=this.videoForm.value;
-    formdata.file=this.videoFile;
-    formdata.thumbnail=this.thumbnail;
+    let formdata = this.videoForm.value;
+    formdata.file = this.videoFile;
+    formdata.thumbnail = this.thumbnail;
     console.log(formdata);
     this.videoservice.addVideo(formdata).subscribe((res) => {
       console.log(res);
@@ -76,9 +77,9 @@ export class AddVideoComponent implements OnInit {
     this.userservice.addFile(formdata).subscribe((res) => {
       console.log(res);
       Swal.fire({
-        icon : 'success',
-        title: 'Add Video Success'
-      })
+        icon: 'success',
+        title: 'Add Video Success',
+      });
     });
   }
 }
